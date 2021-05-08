@@ -6,10 +6,13 @@ See below architecture for the full pipeline.
 
 ## Architecture
 
+![Architecture](https://github.com/Mostafam-Mamdouh/Real-Time_Twitter_Analytics/blob/master/images/Architecture.png?raw=true)
 
 
 ## Visualizations
 
+![Visualization_1](https://github.com/Mostafam-Mamdouh/Real-Time_Twitter_Analytics/blob/master/images/Visualization_1.png?raw=true)
+![Visualization_2](https://github.com/Mostafam-Mamdouh/Real-Time_Twitter_Analytics/blob/master/images/Visualization_2.png?raw=true)
 
 
 ## Installation
