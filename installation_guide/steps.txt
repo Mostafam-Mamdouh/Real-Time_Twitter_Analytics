@@ -1,0 +1,65 @@
+-- steps for Real-Time_Twitter_Analytics (Big Data Solution)
+
+-- Python 2.7.5 + Scala 2.11.8 + Kafka 1.0.0 + Spark 2.3.0 + HDFS 2.7.3 + Hive 1.2.1000
+
+1- install HDP-2.6.5.0 versions, make sure needed services are up and runing (optional, you can use environment that fit you)
+
+
+2- install pip (will give 8.1.2-14 version)
+yum install python-pip
+
+
+3- upgrade pip
+pip install --upgrade pip==18.0 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/pip/18.0/
+
+
+4- install needed packages with specified versions
+
+-- setuptools 44.1.1 (latest with python 2.7)
+pip install setuptools==44.1.1 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/setuptools/44.1.1/
+
+-- jsonpickle 0.3.0
+pip install jsonpickle==2.0.0 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/jsonpickle/
+
+-- findspark 1.4.2
+pip install findspark==1.4.2 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/findspark/
+
+-- kafka-python 2.0.2
+pip install kafka-python==2.0.2 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/kafka-python/
+
+-- kafka-utils 2.3.0
+pip install kafka-utils==2.3.0 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/kafka-utils/
+
+-- nltk 3.4.5 latest nltk compatibile with python 2.7
+pip install nltk==3.4.5 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/nltk/3.4.5/
+
+-- download vader_lexicon
+python
+import nltk
+nltk.downloader.download('vader_lexicon')
+
+-- textblob (optional if you want to use it)
+pip install textblob==0.15.3 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/textblob
+
+-- tweepy 3.10.0
+pip install tweepy==3.10.0 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+https://pypi.org/project/tweepy/
+
+
+5- spark jars
+download spark-streaming-kafka-0-8-assembly_2.11-2.3.0.2.6.5.0-292.jar
+https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-8-assembly_2.11/2.3.0.2.6.5.0-292
+
+copy jar to spark jar directory (example "/usr/hdp/2.6.5.0-292/spark2/jars/")
+
+6- for twitter api 401 Error
+- make sure of credentials
+- make sure time set correctly

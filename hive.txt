@@ -1,0 +1,23 @@
+# create database
+create database twitter;
+
+# create staging table
+CREATE EXTERNAL TABLE twitter.tweets_stg(tweet_id STRING, tweet_timestamp_ms TIMESTAMP, tweet_created_at DATE, id STRING, screen_name STRING, name STRING, location STRING, followers_count BIGINT, msg STRING, score FLOAT, msg_to_send STRING) STORED AS PARQUET LOCATION '/tmp/big_data/Twitter/tweets_stg';
+
+select * from twitter.tweets_stg;
+select * from twitter.tweets_stg limit 100;
+
+
+# create partitioned table
+CREATE EXTERNAL TABLE twitter.tweets(tweet_id STRING, tweet_timestamp_ms TIMESTAMP, id STRING, screen_name STRING, name STRING, location STRING, followers_count BIGINT, msg STRING, score FLOAT, msg_to_send STRING) partitioned by(tweet_created_at DATE) STORED AS PARQUET LOCATION '/tmp/big_data/Twitter/tweets';
+
+# Load the data from the staging table into tweet table partitions dynamically
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+FROM twitter.tweets_stg ts
+INSERT OVERWRITE TABLE twitter.tweets PARTITION(tweet_created_at)
+select ts.tweet_id, ts.tweet_timestamp_ms, ts.id, ts.screen_name, ts.name, ts.location, ts.followers_count, ts.msg, ts.score, ts.msg_to_send, ts.tweet_created_at;
+
+select * from twitter.tweets;
+select * from twitter.tweets limit 100;
